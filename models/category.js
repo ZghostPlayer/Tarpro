@@ -21,13 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     taskId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'tasks', // Nome da tabela no banco de dados
+        model: 'Tasks', // Nome da tabela no banco de dados
         key: 'id'
       }
     }
   }, {
     sequelize,
-    modelName: 'category',
+    modelName: 'Category',
     timestamps: false // Desativa os campos createdAt e updatedAt gerados automaticamente pelo Sequelize
   });
 

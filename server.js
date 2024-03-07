@@ -1,7 +1,10 @@
 require('dotenv').config();
 const userController = require('./src/server/controllers/userController');
+const categoryController = require('./src/server/controllers/categoryController');
+const taskController = require('./src/server/controllers/taskController');
+const authController = require('./src/server/controllers/auth.controller');
+const { Task } = require('./models');
 const express = require('express');
-const authController = require('./src/server/controllers/auth.controller'); // Ajuste o caminho se necessário // Ajuste o caminho se necessário
 const { sequelize } = require('./models');
 const app = express();
 const port = 3000;
@@ -23,7 +26,21 @@ app.get('/users/:id', userController.getUserById);
 app.put('/users/:id', userController.updateUser);
 app.delete('/users/:id', userController.deleteUser);
 
-sequelize.sync({force: true}).then(() => {
+// Rotas para categorias
+app.post('/categories', categoryController.createCategory);
+app.get('/categories', categoryController.getAllCategories);
+app.get('/categories/:id', categoryController.getCategoryById);
+app.put('/categories/:id', categoryController.updateCategory);
+app.delete('/categories/:id', categoryController.deleteCategory);
+
+// Rotas para tarefas
+app.post('/tasks', taskController.createTask);
+app.get('/tasks', taskController.getAllTasks);
+app.get('/tasks/:id', taskController.getTaskById);
+app.put('/tasks/:id', taskController.updateTask);
+app.delete('/tasks/:id', taskController.deleteTask);
+
+sequelize.sync().then(() => {
   app.listen(port, () => console.log(`Server running on port ${port}`));
 });
 
