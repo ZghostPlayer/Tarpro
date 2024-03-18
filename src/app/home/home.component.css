@@ -1,0 +1,28 @@
+.centralized-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .input-field {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 80%;
+  }
+  
+  .submit-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #5cb85c;
+    color: white;
+    cursor: pointer;
+    width: 85%;
+  }
+  .submit-button:hover {
+    background-color: #4cae4c;
+  }

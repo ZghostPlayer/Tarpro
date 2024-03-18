@@ -23,6 +23,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: DataTypes.NOW
     },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    },
     completionDate: {
       type: DataTypes.DATE,
       allowNull: true
@@ -41,8 +46,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Task',
-    timestamps: false // Desativa os campos createdAt e updatedAt gerados automaticamente pelo Sequelize
-  });
+    timestamps: true
+  },
+  );
+
+  Task.associate = (models) => {
+    Task.belongsTo(models.User, { foreignKey: 'userId' });
+  };
 
   return Task;
 };

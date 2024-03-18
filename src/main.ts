@@ -1,6 +1,19 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { provideRouter, Routes } from '@angular/router';
+import { HomeComponent } from './app/home/home.component';
+import { WelcomeComponent } from './app/welcome/welcome.component';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+const routes: Routes = [
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'welcome', component: WelcomeComponent },
+  // outras rotas...
+];
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(withFetch()), // Habilita o uso de fetch para o HttpClient
+    provideRouter(routes) // para rotas
+  ]
+}).catch(err => console.error(err));

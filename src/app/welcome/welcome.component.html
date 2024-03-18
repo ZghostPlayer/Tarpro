@@ -1,0 +1,22 @@
+<form class="task-form" #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)">
+  <div class="user-info">
+    <p>Bem-vindo, {{ userName }}!</p>
+  </div>
+  <div class="form-group">
+    <label for="title">Nome da Tarefa:</label>
+    <input type="text" id="title" class="form-control" name="title" [(ngModel)]="task.title" placeholder="Digite o nome da tarefa">
+  </div>
+  <div class="form-group">
+    <label for="description">Descrição:</label>
+    <textarea id="description" class="form-control" name="description" [(ngModel)]="task.description" placeholder="Descreva a tarefa"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="status">Status:</label>
+    <select id="status" class="form-control" name="status" [(ngModel)]="task.status">
+      <option value="Pending">Pendente</option>
+      <option value="In Progress">Em Andamento</option>
+      <option value="Completed">Concluída</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Criar Tarefa</button>
+</form>

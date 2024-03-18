@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Category',
-    timestamps: false // Desativa os campos createdAt e updatedAt gerados automaticamente pelo Sequelize
+    timestamps: true
   });
 
   return Category;
