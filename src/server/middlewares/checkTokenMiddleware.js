@@ -16,12 +16,12 @@ const checkTokenMiddleware = async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, secretKey);
     const user = await User.findByPk(decoded.userId);
-    console.log('User:', user); 
     if (!user) {
       return res.status(401).json({ error: 'Usuário não encontrado.' });
     }
 
     req.user = user;
+    console.log('req.user set in middleware:', req.user);
     next();
   } catch (error) {
     res.status(401).json({ error: 'Token inválido.' });

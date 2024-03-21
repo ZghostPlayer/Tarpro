@@ -39,19 +39,27 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Users', // Nome da tabela no banco de dados
+        model: 'Users',
         key: 'id'
       }
+    },
+    categoryId: { // Adiciona a chave estrangeira para a categoria
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Categories', // Nome da tabela de categorias
+        key: 'id'
+      },
+      allowNull: true // Permite que a tarefa não tenha uma categoria associada
     }
   }, {
     sequelize,
     modelName: 'Task',
     timestamps: true
-  },
-  );
+  });
 
   Task.associate = (models) => {
     Task.belongsTo(models.User, { foreignKey: 'userId' });
+    Task.belongsTo(models.Category, { foreignKey: 'categoryId' }); // Adiciona a associação com a categoria
   };
 
   return Task;

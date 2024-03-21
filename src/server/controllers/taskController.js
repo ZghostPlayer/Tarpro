@@ -37,6 +37,19 @@ const taskController = {
     }
   },
 
+  async getTasksByUser(req, res) {
+    try {
+
+      const userId = req.user.id;
+      console.log("userIdController:", userId);
+      const tasks = await Task.findAll({
+        where: { userId: userId } 
+      });
+      res.json(tasks);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
 
   async getTaskById(req, res) {
     try {

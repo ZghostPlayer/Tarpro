@@ -4,10 +4,12 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
 import { provideRouter, Routes } from '@angular/router';
 import { HomeComponent } from './app/home/home.component';
 import { WelcomeComponent } from './app/welcome/welcome.component';
+import { ViewTasksComponent } from './app/view-tasks/view-tasks.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent },
+  {path: 'view-tasks', component: ViewTasksComponent}
   // outras rotas...
 ];
 

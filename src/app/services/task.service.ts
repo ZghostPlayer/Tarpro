@@ -4,12 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
-export interface Task {
-    title: string;
-    description: string;
-    status: string;
-}
+import { Task } from '../interface/task.model'; // Importe a interface Task do arquivo task.model.ts
 
 @Injectable({
     providedIn: 'root',
@@ -34,4 +29,19 @@ export class TaskService {
             })
         );
     }
+
+    getTasksByUser(): Observable<Task[]> {
+        const token = localStorage.getItem('auth_token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      
+        return this.http.get<Task[]>(`${this.baseUrl}/tasks/user`, { headers }).pipe(
+          catchError(error => {
+            if (error.status === 401) {
+              localStorage.removeItem('auth_token');
+              this.router.navigate(['/register']);
+            }
+            throw error;
+          })
+        );
+      }
 }

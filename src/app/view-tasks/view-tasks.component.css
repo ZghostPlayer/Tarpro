@@ -1,0 +1,12 @@
+.tasks-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .task {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }

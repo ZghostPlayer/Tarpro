@@ -51,6 +51,7 @@ app.delete('/categories/:id', categoryController.deleteCategory);
 // Rotas para tarefas - Aplique o middleware de token apenas aqui
 app.post('/tasks', checkTokenMiddleware, taskController.createTask);
 app.get('/tasks', checkTokenMiddleware, taskController.getAllTasks);
+app.get('/tasks/user', checkTokenMiddleware, taskController.getTasksByUser);
 app.get('/tasks/:id', checkTokenMiddleware, taskController.getTaskById);
 app.put('/tasks/:id', checkTokenMiddleware, taskController.updateTask);
 app.delete('/tasks/:id', checkTokenMiddleware, taskController.deleteTask);
