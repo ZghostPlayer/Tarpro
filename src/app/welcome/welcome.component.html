@@ -9,7 +9,7 @@
   </div>
   <div class="form-group">
     <label for="description">Descrição:</label>
-    <textarea id="description" class="form-control" name="description" [(ngModel)]="task.description" placeholder="Descreva a tarefa"></textarea>
+    <textarea id="description" class="form-control" name="description" [(ngModel)]="task.description" placeholder="Descreva a tarefa" maxlength="150"></textarea>
   </div>
   <div class="form-group">
     <label for="category">Categoria:</label>
@@ -36,7 +36,7 @@
     </div>
     <div class="form-group">
       <label for="categoryDescription">Descrição da Categoria:</label>
-      <textarea id="categoryDescription" class="form-control" name="description" [(ngModel)]="category.description" placeholder="Descreva a categoria"></textarea>
+      <textarea id="categoryDescription" class="form-control" name="description" [(ngModel)]="category.description" placeholder="Descreva a categoria" maxlength="150"></textarea>
     </div>
     <button type="button" class="btn btn-secondary" (click)="onCreateCategory()">Criar Categoria</button>
   </div>

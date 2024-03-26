@@ -1,12 +1,25 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* Isso evita a barra de rolagem horizontal devido ao padding */
+  box-sizing: border-box;
+}
+
 .welcome-container {
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto; /* Isso centraliza o container mas remove a margem do topo */
   padding: 20px;
+  padding-top: 60px; /* Espaço extra para acomodar a barra fixa no topo */
 }
 
 .task-form {
-  margin-top: 20px;
+  padding-top: 80px; /* Espaço para a barra fixa no topo */
+  max-width: 600px; /* Isso vai limitar a largura do formulário */
+  margin: 0 auto; /* Isso centraliza o formulário na página */
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
 }
+
 
 .form-group {
   margin-bottom: 15px;
@@ -18,10 +31,11 @@
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  resize: none; /* Isso impede que as textareas sejam redimensionadas */
 }
 
 .btn {
-  background-color: #007bff;
+  background-color: #5c0bc7;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -30,15 +44,15 @@
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background-color: #3e0884;
 }
 
 .btn-secondary {
-  background-color: #6c757d;
+  background-color: #5c0bc7;
 }
 
 .btn-secondary:hover {
-  background-color: #5a6268;
+  background-color: #3e0884;
 }
 
 .category-form {
@@ -53,13 +67,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #5c0bc7;
+  box-shadow: 0 2px 4px rgba(113, 14, 212, 0.1);
+  z-index: 1000;
+}
+
+.welcome-text, .tasks-button {
+  padding: 10px 20px;
+}
+
+.user-info p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  /* Se precisar de mais espaço ao redor do texto, ajuste o padding aqui */
 }
 
 .btn-view-tasks {
   background-color: #28a745;
   color: white;
+  /* A margem aqui não é mais necessária pois o padding é tratado nos divs */
 }
 
 .btn-view-tasks:hover {
   background-color: #218838;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
